@@ -122,10 +122,6 @@ publishing {
         }
     }
 }
-
-def curseRelations = {
-
-}
  
 curseforge {
     if (project.hasProperty('curse_key'))
@@ -138,13 +134,9 @@ curseforge {
  
         mainArtifact(jar) {
             displayName = "${mod_name} - ${mod_version}-${build_number}"
-            relations curseRelations
         }
  
-        addArtifact(deobfJar) {
-            relations curseRelations
-        }
- 
+        addArtifact deobfJar
         addArtifact sourceJar
         addArtifact javadocJar
     }
