@@ -1,9 +1,9 @@
 package tehnut.goodybags.util;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import tehnut.goodybags.ModInformation;
 import tehnut.goodybags.base.Bag;
 import tehnut.goodybags.enums.BagType;

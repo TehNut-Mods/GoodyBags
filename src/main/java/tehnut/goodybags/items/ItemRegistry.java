@@ -1,14 +1,19 @@
 package tehnut.goodybags.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import tehnut.goodybags.util.InventoryRender;
 
 public class ItemRegistry {
 
     public static Item bag;
 
     public static void registerItems() {
-        bag = new ItemBag();
+        bag = new ItemGoodyBag();
         GameRegistry.registerItem(bag, "ItemGoodyBag");
+    }
+
+    public static void registerRenders() {
+        InventoryRender.inventoryItemRenderAll(bag);
     }
 }

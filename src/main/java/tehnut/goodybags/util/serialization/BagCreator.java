@@ -2,9 +2,9 @@ package tehnut.goodybags.util.serialization;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import cpw.mods.fml.common.registry.GameData;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameData;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import tehnut.goodybags.GoodyBags;
 import tehnut.goodybags.base.Bag;
@@ -68,7 +68,7 @@ public class BagCreator {
         @Override
         public JsonElement serialize(ItemStack src, Type typeOfSrc, JsonSerializationContext context) {
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("name", GameData.getItemRegistry().getNameForObject(src.getItem()));
+            jsonObject.addProperty("name", GameData.getItemRegistry().getNameForObject(src.getItem()).toString());
             jsonObject.addProperty("metadata", src.getItemDamage());
             jsonObject.addProperty("amount", src.stackSize);
 
@@ -83,7 +83,7 @@ public class BagCreator {
             String bagType = json.getAsJsonObject().get("bagType").getAsString().toUpperCase();
             String name = json.getAsJsonObject().get("name").getAsString();
             int chance = BagType.valueOf(bagType) == BagType.LOOT ? json.getAsJsonObject().get("lootChance").getAsInt() : 0;
-            String rarity = json.getAsJsonObject().get("rarityType").getAsString().toLowerCase();
+            String rarity = json.getAsJsonObject().get("rarityType").getAsString().toUpperCase();
             List<ItemStack> stacks = context.deserialize(json.getAsJsonObject().get("stackList"), new TypeToken<List<ItemStack>>() {
             }.getType());
 

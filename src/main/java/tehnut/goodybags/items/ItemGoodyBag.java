@@ -1,7 +1,5 @@
 package tehnut.goodybags.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -10,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 import tehnut.goodybags.GoodyBags;
 import tehnut.goodybags.ModInformation;
@@ -19,11 +19,10 @@ import tehnut.goodybags.util.BagRegistry;
 
 import java.util.List;
 
-public class ItemBag extends Item {
+public class ItemGoodyBag extends Item {
 
-    public ItemBag() {
+    public ItemGoodyBag() {
         setUnlocalizedName(ModInformation.ID);
-        setTextureName(ModInformation.ID + ":goodybag");
         setCreativeTab(GoodyBags.tabBag);
         setMaxStackSize(1);
         setHasSubtypes(true);
@@ -103,7 +102,7 @@ public class ItemBag extends Item {
         if (isValidBag(stack))
             return BagRegistry.getBag(stack.getItemDamage()).getRarity();
 
-        return EnumRarity.common;
+        return EnumRarity.COMMON;
     }
 
     public static boolean isValidBag(ItemStack stack) {
