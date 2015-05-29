@@ -1,0 +1,15 @@
+# Creative Tab
+itemGroup.GoodyBags.creativeTab=Goody Bags
+
+# Items
+item.GoodyBags.bag.name=%s Goody Bag
+
+# Information
+info.GoodyBags.prize=Prize
+info.GoodyBags.loot=Loot
+info.GoodyBags.spawn=Spawn
+info.GoodyBags.null=Null
+info.GoodyBags.hold=Hold shift for contents
+info.GoodyBags.contents=Contents:
+info.GoodyBags.stacks=%dx %s
+info.GoodyBags.warning=Warning: Invalid Bag

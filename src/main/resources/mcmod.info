@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "GoodyBags",
+    "name": "GoodyBags",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "http://tehnut.info/",
+    "updateUrl": "http://tehnut.info/jenkins/",
+    "authorList": [ "TehNut" ],
+    "credits": "BBoldt, tterrag, Tombenpotter, hilburn",
+    "logoFile": "",
+    "screenshots": [ ]
+  }
+]
