@@ -1,6 +1,7 @@
 package tehnut.goodybags.items;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -40,14 +41,12 @@ public class ItemGoodyBag extends Item {
 
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-        if (!world.isRemote) {
-            if (isValidBag(stack)) {
-                player.inventory.decrStackSize(player.inventory.currentItem, 1);
-                for (ItemStack prizeStack : BagRegistry.getBag(stack.getItemDamage()).getStacks())
-                    player.inventory.addItemStackToInventory(prizeStack);
-            }
+        if (!world.isRemote && isValidBag(stack)) {
+            player.inventory.decrStackSize(player.inventory.currentItem, 1);
 
-            player.inventoryContainer.detectAndSendChanges();
+            for (ItemStack goodyStack : BagRegistry.getBag(stack.getItemDamage()).getStacks())
+                if (goodyStack != null)
+                    world.spawnEntityInWorld(new EntityItem(world, player.posX, player.posY, player.posZ, goodyStack));
         }
 
         return stack;
@@ -60,6 +59,8 @@ public class ItemGoodyBag extends Item {
         if (!BagRegistry.isEmpty())
             for (int i = 0; i < BagRegistry.getSize(); i++)
                 list.add(new ItemStack(this, 1, i));
+
+        list.add(new ItemStack(this, 1, BagRegistry.getSize() + 1));
     }
 
     @Override
