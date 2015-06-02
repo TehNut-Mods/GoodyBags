@@ -1,6 +1,7 @@
 package tehnut.goodybags.util;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -18,8 +19,7 @@ public class EventHandler {
 
             for (Bag bag : BagRegistry.getBagList()) {
                 if (bag.getType() == BagType.SPAWN && !tag.getBoolean("hasInitial" + BagRegistry.getIndexOf(bag))) {
-                    player.inventory.addItemStackToInventory(BagRegistry.getItemStackForBag(bag));
-                    player.inventoryContainer.detectAndSendChanges();
+                    event.world.spawnEntityInWorld(new EntityItem(event.world, event.entity.posX, event.entity.posY, event.entity.posZ, BagRegistry.getItemStackForBag(bag)));
                     tag.setBoolean("hasInitial" + BagRegistry.getIndexOf(bag), true);
                 }
             }
