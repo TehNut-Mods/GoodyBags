@@ -5,6 +5,7 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import tehnut.goodybags.base.Bag;
 import tehnut.goodybags.enums.BagType;
+import tehnut.goodybags.registry.BagRegistry;
 
 public class LootGenerator {
 

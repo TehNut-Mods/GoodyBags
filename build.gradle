@@ -39,7 +39,7 @@ repositories {
 }
 
 dependencies {
-
+    compile "org.projectlombok:lombok:1.16.4"
 }
 
 minecraft {

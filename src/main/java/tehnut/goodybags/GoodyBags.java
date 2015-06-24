@@ -11,15 +11,19 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import tehnut.goodybags.items.ItemRegistry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import tehnut.goodybags.base.Bag;
+import tehnut.goodybags.registry.ItemRegistry;
 import tehnut.goodybags.proxies.CommonProxy;
-import tehnut.goodybags.util.BagRegistry;
+import tehnut.goodybags.registry.BagRegistry;
 import tehnut.goodybags.util.EventHandler;
 import tehnut.goodybags.util.LootGenerator;
+import tehnut.goodybags.util.cache.PermanentCache;
 import tehnut.goodybags.util.serialization.BagCreator;
 
 import java.io.File;
+import java.util.ArrayList;
 
 @Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, dependencies = ModInformation.REQUIRED)
 public class GoodyBags {
@@ -39,9 +43,11 @@ public class GoodyBags {
         }
     };
 
+    public static Logger logger = LogManager.getLogger(ModInformation.NAME);
+
     @Mod.Instance
     public static GoodyBags instance;
-    public static Configuration config;
+    private static PermanentCache<Bag> bagCache;
 
     private static File configDir;
 
@@ -49,10 +55,16 @@ public class GoodyBags {
         return configDir;
     }
 
+    public static PermanentCache<Bag> getBagCache() {
+        return bagCache;
+    }
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ModInformation.ID);
         configDir.mkdirs();
+
+        bagCache = new PermanentCache<Bag>(ModInformation.ID + "Cache");
 
         ItemRegistry.registerItems();
     }
@@ -71,6 +83,7 @@ public class GoodyBags {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         BagCreator.registerJsonBags(BagRegistry.bagBuilder);
+        BagRegistry.setBagList(new ArrayList<Bag>(getBagCache().getEnumeratedObjects().valueCollection()));
         LootGenerator.generateLoot();
     }
 }

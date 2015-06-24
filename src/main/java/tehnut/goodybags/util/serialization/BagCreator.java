@@ -9,8 +9,8 @@ import org.apache.commons.io.filefilter.FileFilterUtils;
 import tehnut.goodybags.GoodyBags;
 import tehnut.goodybags.base.Bag;
 import tehnut.goodybags.enums.BagType;
-import tehnut.goodybags.util.BagBuilder;
-import tehnut.goodybags.util.BagRegistry;
+import tehnut.goodybags.base.BagBuilder;
+import tehnut.goodybags.registry.BagRegistry;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -58,9 +58,12 @@ public class BagCreator {
 
         @Override
         public ItemStack deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-            String name = json.getAsJsonObject().get("name").getAsString();
-            int meta = json.getAsJsonObject().get("metadata").getAsInt();
-            int size = json.getAsJsonObject().get("amount").getAsInt();
+
+            JsonHelper helper = new JsonHelper(json);
+
+            String name = helper.getString("name");
+            int meta = helper.getInteger("metadata");
+            int size = helper.getInteger("amount");
 
             return new ItemStack(GameData.getItemRegistry().getObject(name), size, meta);
         }
@@ -80,10 +83,13 @@ public class BagCreator {
 
         @Override
         public Bag deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-            String bagType = json.getAsJsonObject().get("bagType").getAsString().toUpperCase();
-            String name = json.getAsJsonObject().get("name").getAsString();
-            int chance = BagType.valueOf(bagType) == BagType.LOOT ? json.getAsJsonObject().get("lootChance").getAsInt() : 0;
-            String rarity = json.getAsJsonObject().get("rarityType").getAsString().toLowerCase();
+
+            JsonHelper helper = new JsonHelper(json);
+
+            String bagType = helper.getString("bagType").toUpperCase();
+            String name = helper.getString("name");
+            int chance = helper.getNullableInteger("lootChance", 0);
+            String rarity = helper.getString("rarityType").toLowerCase();
             List<ItemStack> stacks = context.deserialize(json.getAsJsonObject().get("stackList"), new TypeToken<List<ItemStack>>() {
             }.getType());
 

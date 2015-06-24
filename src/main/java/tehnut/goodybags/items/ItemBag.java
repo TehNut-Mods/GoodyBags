@@ -16,7 +16,7 @@ import tehnut.goodybags.GoodyBags;
 import tehnut.goodybags.ModInformation;
 import tehnut.goodybags.base.Bag;
 import tehnut.goodybags.enums.BagType;
-import tehnut.goodybags.util.BagRegistry;
+import tehnut.goodybags.registry.BagRegistry;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class ItemBag extends Item {
             for (int i = 0; i < BagRegistry.getSize(); i++)
                 list.add(new ItemStack(this, 1, i));
 
-        list.add(new ItemStack(this, 1, BagRegistry.getSize() + 1));
+        list.add(BagRegistry.getItemStackForNullBag());
     }
 
     @Override
@@ -88,7 +88,7 @@ public class ItemBag extends Item {
                 if (isShiftDown()) {
                     list.add(EnumChatFormatting.GOLD + StatCollector.translateToLocal("info.GoodyBags.contents"));
                     for (ItemStack giveStack : bag.getStacks())
-                        list.add(String.format(EnumChatFormatting.YELLOW + StatCollector.translateToLocal("info.GoodyBags.stacks"), giveStack.stackSize, giveStack.getDisplayName()));
+                        list.add(String.format(EnumChatFormatting.YELLOW + StatCollector.translateToLocal("info.GoodyBags.stacks"), giveStack.stackSize, EnumChatFormatting.getTextWithoutFormattingCodes(giveStack.getDisplayName())));
                 } else {
                     list.add(StatCollector.translateToLocal("info.GoodyBags.hold"));
                 }

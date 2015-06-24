@@ -1,19 +1,19 @@
-package tehnut.goodybags.util;
+package tehnut.goodybags.base;
 
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import tehnut.goodybags.base.Bag;
 import tehnut.goodybags.enums.BagType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BagBuilder {
 
-    private BagType type;
-    private String name;
-    private int chance;
-    private EnumRarity rarity;
-    private List<ItemStack> stacks;
+    private BagType type = BagType.PRIZE;
+    private String name = type.toString() + "Bag";
+    private int chance = 0;
+    private EnumRarity rarity = EnumRarity.common;
+    private List<ItemStack> stacks = new ArrayList<ItemStack>();
 
     public BagBuilder() {
 

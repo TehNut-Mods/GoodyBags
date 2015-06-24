@@ -8,6 +8,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import tehnut.goodybags.ModInformation;
 import tehnut.goodybags.base.Bag;
 import tehnut.goodybags.enums.BagType;
+import tehnut.goodybags.registry.BagRegistry;
 
 public class EventHandler {
 
