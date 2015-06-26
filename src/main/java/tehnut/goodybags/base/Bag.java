@@ -1,7 +1,6 @@
 package tehnut.goodybags.base;
 
 import com.google.common.collect.Lists;
-import com.google.gson.annotations.SerializedName;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import tehnut.goodybags.enums.BagType;
@@ -10,16 +9,17 @@ import java.util.List;
 
 public class Bag {
 
-    @SerializedName("")
     private BagType type;
     private String name;
+    private String customTip;
     private int chance;
     private EnumRarity rarity;
     private List<ItemStack> stacks;
 
-    public Bag(BagType type, String name, int chance, EnumRarity rarity, List<ItemStack> stacks) {
+    public Bag(BagType type, String name, String customTip, int chance, EnumRarity rarity, List<ItemStack> stacks) {
         this.type = type;
         this.name = name;
+        this.customTip = customTip;
         this.chance = chance;
         this.rarity = rarity;
         this.stacks = stacks;
@@ -31,6 +31,10 @@ public class Bag {
 
     public String getName() {
         return name;
+    }
+
+    public String getCustomTip() {
+        return customTip;
     }
 
     public int getChance() {

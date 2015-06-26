@@ -1,5 +1,6 @@
 package tehnut.goodybags.items;
 
+import com.google.common.base.Strings;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,6 +19,8 @@ import tehnut.goodybags.base.Bag;
 import tehnut.goodybags.enums.BagType;
 import tehnut.goodybags.registry.BagRegistry;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ItemBag extends Item {
@@ -83,6 +86,9 @@ public class ItemBag extends Item {
             String customUnloc = "type.GoodyBags.bag." + bag.getName();
 
             list.add(bag.getType().getTextColor() + (StatCollector.canTranslate(customUnloc) ? StatCollector.translateToLocal(customUnloc) : bag.getName()));
+
+            if (!Strings.isNullOrEmpty(bag.getCustomTip()))
+                list.addAll(Arrays.asList(bag.getCustomTip().split("\n")));
 
             if (bag.getType() == BagType.SPAWN || bag.getType() == BagType.PRIZE) {
                 if (isShiftDown()) {

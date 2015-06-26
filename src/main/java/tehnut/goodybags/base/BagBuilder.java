@@ -11,6 +11,7 @@ public class BagBuilder {
 
     private BagType type = BagType.PRIZE;
     private String name = type.toString() + "Bag";
+    private String customTip = "";
     private int chance = 0;
     private EnumRarity rarity = EnumRarity.common;
     private List<ItemStack> stacks = new ArrayList<ItemStack>();
@@ -26,6 +27,11 @@ public class BagBuilder {
 
     public BagBuilder setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public BagBuilder setCustomTip(String customTip) {
+        this.customTip = customTip;
         return this;
     }
 
@@ -45,6 +51,6 @@ public class BagBuilder {
     }
 
     public Bag build() {
-        return new Bag(type, name, chance, rarity, stacks);
+        return new Bag(type, name, customTip, chance, rarity, stacks);
     }
 }

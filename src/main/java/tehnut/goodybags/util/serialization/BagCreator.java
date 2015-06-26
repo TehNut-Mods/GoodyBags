@@ -90,12 +90,14 @@ public class BagCreator {
             String name = helper.getString("name");
             int chance = helper.getNullableInteger("lootChance", 0);
             String rarity = helper.getString("rarityType").toLowerCase();
+            String customTip = helper.getNullableString("customTip", "");
             List<ItemStack> stacks = context.deserialize(json.getAsJsonObject().get("stackList"), new TypeToken<List<ItemStack>>() {
             }.getType());
 
             BagBuilder builder = new BagBuilder();
             builder.setType(BagType.valueOf(bagType));
             builder.setName(name);
+            builder.setCustomTip(customTip);
             builder.setChance(chance);
             builder.setRarity(EnumRarity.valueOf(rarity));
             builder.setStacks(stacks);
