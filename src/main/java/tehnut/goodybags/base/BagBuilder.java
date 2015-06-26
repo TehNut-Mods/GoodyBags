@@ -7,10 +7,14 @@ import tehnut.goodybags.enums.BagType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Factory for creating Bags.
+ * Documentation for each field can be found in {@link Bag}
+ */
 public class BagBuilder {
 
     private BagType type = BagType.PRIZE;
-    private String name = type.toString() + "Bag";
+    private String name = type.toString() + " Bag";
     private String customTip = "";
     private int chance = 0;
     private EnumRarity rarity = EnumRarity.common;

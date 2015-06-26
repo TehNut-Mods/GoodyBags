@@ -16,6 +16,16 @@ public class Bag {
     private EnumRarity rarity;
     private List<ItemStack> stacks;
 
+    /**
+     * To create a bag, use {@link BagBuilder}
+     *
+     * @param type      - Type of bag. Determines how the bag is handled.
+     * @param name      - The name of the bag. Displays on tooltip.
+     * @param customTip - Custom tooltip to display on the bag.
+     * @param chance    - Chance for the bag to generate in a loot chest. Only needs to be set if the type is LOOT.
+     * @param rarity    - Rarity of the bag. Determines the color of the item name. Affects nothing else.
+     * @param stacks    - List of ItemStacks to give to the player when they right click.
+     */
     protected Bag(BagType type, String name, String customTip, int chance, EnumRarity rarity, List<ItemStack> stacks) {
         this.type = type;
         this.name = name;
