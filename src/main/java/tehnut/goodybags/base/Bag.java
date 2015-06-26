@@ -16,7 +16,7 @@ public class Bag {
     private EnumRarity rarity;
     private List<ItemStack> stacks;
 
-    public Bag(BagType type, String name, String customTip, int chance, EnumRarity rarity, List<ItemStack> stacks) {
+    protected Bag(BagType type, String name, String customTip, int chance, EnumRarity rarity, List<ItemStack> stacks) {
         this.type = type;
         this.name = name;
         this.customTip = customTip;
