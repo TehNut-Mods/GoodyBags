@@ -61,7 +61,7 @@ public class GoodyBags {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        configDir = new File(event.getModConfigurationDirectory() + File.pathSeparator + ModInformation.ID);
+        configDir = new File(event.getModConfigurationDirectory(), ModInformation.ID);
         configDir.mkdirs();
 
         bagCache = new PermanentCache<Bag>(ModInformation.ID + "Cache");
