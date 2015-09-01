@@ -8,7 +8,8 @@ import java.util.Locale;
 public enum BagType {
     PRIZE(new Color(0, 251, 255), EnumChatFormatting.AQUA),
     LOOT(new Color(255, 223, 0), EnumChatFormatting.YELLOW),
-    SPAWN(new Color(0, 255, 22), EnumChatFormatting.GREEN);
+    SPAWN(new Color(0, 255, 22), EnumChatFormatting.GREEN),
+    MOB(new Color(255, 142, 82), EnumChatFormatting.GOLD);
 
     private final Color bagColor;
     private final EnumChatFormatting textColor;

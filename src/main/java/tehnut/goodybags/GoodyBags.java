@@ -4,9 +4,7 @@ import com.google.gson.GsonBuilder;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.*;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,6 +17,7 @@ import tehnut.goodybags.proxies.CommonProxy;
 import tehnut.goodybags.registry.BagRegistry;
 import tehnut.goodybags.util.EventHandler;
 import tehnut.goodybags.util.LootGenerator;
+import tehnut.goodybags.util.Utils;
 import tehnut.goodybags.util.cache.PermanentCache;
 import tehnut.goodybags.util.serialization.BagCreator;
 
@@ -63,6 +62,7 @@ public class GoodyBags {
     public void preInit(FMLPreInitializationEvent event) {
         configDir = new File(event.getModConfigurationDirectory(), ModInformation.ID);
         configDir.mkdirs();
+        ConfigHandler.init(new File(configDir, ModInformation.ID + ".cfg"));
 
         bagCache = new PermanentCache<Bag>(ModInformation.ID + "Cache");
 
@@ -85,5 +85,11 @@ public class GoodyBags {
         BagCreator.registerJsonBags(BagRegistry.bagBuilder);
         BagRegistry.setBagList(new ArrayList<Bag>(getBagCache().getEnumeratedObjects().valueCollection()));
         LootGenerator.generateLoot();
+        Utils.setEntityList();
+    }
+
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event) {
+        proxy.registerCommands();
     }
 }

@@ -15,6 +15,7 @@ public class Bag {
     private int chance;
     private EnumRarity rarity;
     private List<ItemStack> stacks;
+    private String[] mobs;
 
     /**
      * To create a bag, use {@link BagBuilder}
@@ -26,13 +27,14 @@ public class Bag {
      * @param rarity    - Rarity of the bag. Determines the color of the item name. Affects nothing else.
      * @param stacks    - List of ItemStacks to give to the player when they right click.
      */
-    protected Bag(BagType type, String name, String customTip, int chance, EnumRarity rarity, List<ItemStack> stacks) {
+    protected Bag(BagType type, String name, String customTip, int chance, EnumRarity rarity, List<ItemStack> stacks, String[] mobs) {
         this.type = type;
         this.name = name;
         this.customTip = customTip;
         this.chance = chance;
         this.rarity = rarity;
         this.stacks = stacks;
+        this.mobs = mobs;
     }
 
     public BagType getType() {
@@ -62,5 +64,9 @@ public class Bag {
             ret.add(stack.copy());
 
         return ret;
+    }
+
+    public String[] getMobs() {
+        return mobs;
     }
 }

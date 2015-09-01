@@ -19,6 +19,7 @@ public class BagBuilder {
     private int chance = 0;
     private EnumRarity rarity = EnumRarity.common;
     private List<ItemStack> stacks = new ArrayList<ItemStack>();
+    private String[] mobs = { };
 
     public BagBuilder() {
 
@@ -54,7 +55,12 @@ public class BagBuilder {
         return this;
     }
 
+    public BagBuilder setMobs(String[] mobs) {
+        this.mobs = mobs;
+        return this;
+    }
+
     public Bag build() {
-        return new Bag(type, name, customTip, chance, rarity, stacks);
+        return new Bag(type, name, customTip, chance, rarity, stacks, mobs);
     }
 }

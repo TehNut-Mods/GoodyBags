@@ -8,6 +8,7 @@ item.GoodyBags.bag.name=%s Goody Bag
 info.GoodyBags.prize=Prize
 info.GoodyBags.loot=Loot
 info.GoodyBags.spawn=Spawn
+info.GoodyBags.mob=Mob
 info.GoodyBags.null=Empty
 info.GoodyBags.hold=Hold shift for contents
 info.GoodyBags.contents=Contents:

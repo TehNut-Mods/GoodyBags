@@ -3,6 +3,7 @@ package tehnut.goodybags.util.serialization;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import cpw.mods.fml.common.registry.GameData;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import org.apache.commons.io.filefilter.FileFilterUtils;
@@ -14,6 +15,7 @@ import tehnut.goodybags.registry.BagRegistry;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BagCreator {
@@ -93,6 +95,13 @@ public class BagCreator {
             String customTip = helper.getNullableString("customTip", "");
             List<ItemStack> stacks = context.deserialize(json.getAsJsonObject().get("stackList"), new TypeToken<List<ItemStack>>() {
             }.getType());
+            List<String> mobs = new ArrayList<String>();
+            if (json.getAsJsonObject().get("mobs") != null && BagType.valueOf(bagType) == BagType.MOB) {
+                mobs = context.deserialize(json.getAsJsonObject().get("mobs"), new TypeToken<List<String>>() {
+                }.getType());
+            }
+
+            String[] mobArray = mobs.toArray(new String[mobs.size()]);
 
             BagBuilder builder = new BagBuilder();
             builder.setType(BagType.valueOf(bagType));
@@ -101,6 +110,7 @@ public class BagCreator {
             builder.setChance(chance);
             builder.setRarity(EnumRarity.valueOf(rarity));
             builder.setStacks(stacks);
+            builder.setMobs(mobArray);
 
             return builder.build();
         }
@@ -114,6 +124,8 @@ public class BagCreator {
                 jsonObject.add("lootChance", context.serialize(src.getChance()));
             jsonObject.add("rarityType", context.serialize(src.getRarity()));
             jsonObject.add("stackList", context.serialize(src.getStacks()));
+            if (src.getType() == BagType.MOB)
+                jsonObject.add("mobs", context.serialize(src.getMobs()));
             return jsonObject;
         }
     }
