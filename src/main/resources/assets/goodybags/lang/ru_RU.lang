@@ -1,0 +1,16 @@
+# Creative Tab
+itemGroup.GoodyBags.creativeTab=Goody Bags
+
+# Items
+item.GoodyBags.bag.name=Мешочек с подарком (%s)
+
+# Information
+info.GoodyBags.prize=Приз
+info.GoodyBags.loot=Добыча
+info.GoodyBags.spawn=Стартовый
+info.GoodyBags.mob=Награда
+info.GoodyBags.null=Пустой
+info.GoodyBags.hold=Зажмите shift, чтобы увидеть содержимое
+info.GoodyBags.contents=Содержимое:
+info.GoodyBags.stacks=%dx %s
+info.GoodyBags.warning=Внимание: Недействительный мешочек
