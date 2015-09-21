@@ -1,0 +1,16 @@
+# Creative Tab
+itemGroup.GoodyBags.creativeTab=藏宝袋子
+
+# Items
+item.GoodyBags.bag.name=藏宝袋子（%s）
+
+# Information
+info.GoodyBags.prize=奖励
+info.GoodyBags.loot=战利品
+info.GoodyBags.spawn=生成
+info.GoodyBags.mob=怪物
+info.GoodyBags.null=空
+info.GoodyBags.hold=按下shift以显示内容
+info.GoodyBags.contents=内含:
+info.GoodyBags.stacks=%dx%s
+info.GoodyBags.warning=警告：这是个无效袋子
