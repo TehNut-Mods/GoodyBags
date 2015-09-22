@@ -1,0 +1,16 @@
+# Creative Tab
+itemGroup.GoodyBags.creativeTab=Booty Bags
+
+# Items
+item.GoodyBags.bag.name=%s Bag O' Booty
+
+# Information
+info.GoodyBags.prize=Pieces of eight
+info.GoodyBags.loot=Booty
+info.GoodyBags.spawn=Spawn
+info.GoodyBags.mob=Pillaged Booty
+info.GoodyBags.null=Dead men tell no tales.
+info.GoodyBags.hold=Avast ye, hold shift for contents
+info.GoodyBags.contents=Contents:
+info.GoodyBags.stacks=%dx %s
+info.GoodyBags.warning=Blow me down! FOOL'S BOOTY
